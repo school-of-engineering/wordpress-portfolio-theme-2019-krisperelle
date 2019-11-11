@@ -3,6 +3,7 @@
 function project_post_type() {
     $args = array(
         'public'              => true,
+        'label'               => 'project',
         'menu_icon'           => 'dashicons-portfolio', // string (defaults to use the post icon)
         'hierarchical'        => false,
         'has_archive'=>'projects',

@@ -13,7 +13,7 @@ if( have_posts() ){
 
         /* Display the image of the post */
         echo "<div class='image_holder'>";
-        the_post_thumbnail(grid_thumbnail);
+        the_post_thumbnail('grid_thumbnail');
         echo "</div>";
 
           /* Display the content of the post */
