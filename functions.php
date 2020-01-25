@@ -6,8 +6,8 @@ function project_post_type() {
         'label'               => 'project',
         'menu_icon'           => 'dashicons-portfolio', // string (defaults to use the post icon)
         'hierarchical'        => false,
-        'has_archive'=>'projects',
-        'supports' => array(
+        'has_archive'         => true,
+        'supports'            => array(
             'title',
             'editor',
             'author',

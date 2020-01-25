@@ -1,34 +1,26 @@
-<?php get_header();
-
-$terms = get_the_terms( get_the_ID(),'wpproject');
-foreach ($terms as $term) {
-echo "<span>" . $terms->name . "| </span>";
-}
+<?php /* Template name: Archive page */
+get_header();
+$terms = get_the_terms( get_the_ID(),'project');
+// foreach ($terms as $term) {
+// echo "<span>" . $terms->name . "| </span>";
+// }
 ?>
 
 <?php
-if(have_posts() ){
-?>
-  <div class="gridcont">
-  <?php
-    while( have_posts() ){
-        echo "<div class='grid_content'>";
-        the_post();
-        /* Display the title of the post */
-  ?>
-    <a class='links' href="<?php the_permalink(); ?>"><h1 class="site-title"><?php the_title(); ?></h1></a>
-    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(post_image); ?></a>
-    <?php
-        the_content();
-        ?>
-        <a class="permalink_button" href="<?php the_permalink(); ?> ">Read More About: <?php the_title(); ?></a>
-        <?php echo "</div>";?>
-        <?php
-        }
-    ?>
-    </div>
-    <?php
+$args = array(
+  'post_type' => "project",
+  'posts_per_page' => -1,
+  'post_status' => "publish",
+);
+$posts = new WP_Query($args);
+ print '<div class="wraper">';
+if ( $posts->have_posts() ) {
+  while( $posts->have_posts() ) {
+    $posts->the_post();
+    print '<li class="project">'. get_the_post_thumbnail(). '<a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+  }
 }
+print'</div>';
 
 
 get_footer();

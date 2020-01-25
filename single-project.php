@@ -6,15 +6,17 @@ if( have_posts() ){
     <?php
     while( have_posts() ){
         the_post();
+                /* Display the image of the post */
+                echo "<div class='image_holder'>";
+                the_post_thumbnail('grid_thumbnail');
+                echo "</div>";
         /* Display the title of the post */
         ?>
+        <div class="contentCont">
         <h1 class="site-title"><?php the_title(); ?></h1>
         <?php
 
-        /* Display the image of the post */
-        echo "<div class='image_holder'>";
-        the_post_thumbnail('grid_thumbnail');
-        echo "</div>";
+
 
           /* Display the content of the post */
           echo "<div class='page_content_holder'>";
@@ -41,7 +43,7 @@ if( have_posts() ){
           }
           }
 
-          echo "</div>"; //page_content_holder
+          echo "</div></div>"; //page_content_holder
     }
     ?>
     </div> <!-- .site-container -->

@@ -12,10 +12,12 @@ $args = array(
   'post_status' => "publish",
 );
 $posts = new WP_Query($args);
+ print '<div class="wraper">';
 if ( $posts->have_posts() ) {
   while( $posts->have_posts() ) {
     $posts->the_post();
-    print '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+    print '<li class="project">'. get_the_post_thumbnail(). '<a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
   }
 }
+print '</div>';
 get_footer();
